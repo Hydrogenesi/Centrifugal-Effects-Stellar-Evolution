@@ -1,20 +1,88 @@
-*.py[co]
+# Python bytecode
+__pycache__/
+*.py[cod]
+*$py.class
 
-# Default development database
-devdata.db
-
-# Default data directory
-data/*
-
-# Packages
+# Distribution / packaging
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
 *.egg
-*.egg-info
-dist
-build
+*.manifest
+*.spec
 
-# Installer logs
+# Log files
 pip-log.txt
+pip-delete-this-directory.txt
+*.log
 
 # Unit test / coverage reports
+htmlcov/
+.tox/
 .coverage
-.tox
+.coverage.*
+.cache
+.pytest_cache/
+nosetests.xml
+coverage.xml
+*.cover
+.hypothesis/
+
+# Translations
+*.mo
+*.pot
+
+# PyBuilder
+target/
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# IPython
+profile_default/
+ipython_config.py
+
+# pyenv
+.python-version
+
+# pyflow
+__pypackages__/
+
+# Environment
+.env
+.venv
+env/
+venv/
+ENV/
+
+# IDE specific files
+# PyCharm
+.idea/
+
+# Sublime Text
+*.tmlanguage.cache
+*.tmPreferences.cache
+*.stTheme.cache
+*.sublime-workspace
+*.sublime-project
+sftp-config.json
+
+# Visual Studio Code
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+.history
