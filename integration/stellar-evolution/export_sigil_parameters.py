@@ -86,7 +86,7 @@ def build_simulation_input(sigil_id: str, mass: float = 1.0e30) -> dict[str, Any
     }
 
     for parameter, override in overrides.items():
-        if parameter in {"mass"}:
+        if parameter == "mass":
             continue
         if parameter in state_keys:
             section, key = state_keys[parameter]

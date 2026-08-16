@@ -14,7 +14,7 @@ function buildCard(record) {
   card.querySelector("h2").textContent = record.card.title;
   card.querySelector(".sigil-card__tier").textContent = record.metadata.tier;
   const img = card.querySelector("img");
-  img.src = `../${record.metadata.svg.file}`;
+  img.src = new URL(record.metadata.svg.file, new URL("../", window.location.href)).toString();
   img.alt = `${record.metadata.name} preview`;
   card.querySelector(".sigil-card__summary").textContent = record.metadata.summary;
 
@@ -58,13 +58,14 @@ function renderCatalog(records, domain) {
 }
 
 async function init() {
-  const manifest = await fetchJson("../registry/manifest.json");
+  const atlasRoot = new URL("../", window.location.href);
+  const manifest = await fetchJson(new URL("registry/manifest.json", atlasRoot));
   const records = await Promise.all(
     manifest.sigils.map(async (entry) => {
       const [metadata, card, mapping] = await Promise.all([
-        fetchJson(`../${entry.metadataPath}`),
-        fetchJson(`../${entry.cardPath}`),
-        fetchJson(`../${entry.mappingPath}`)
+        fetchJson(new URL(entry.metadataPath, atlasRoot)),
+        fetchJson(new URL(entry.cardPath, atlasRoot)),
+        fetchJson(new URL(entry.mappingPath, atlasRoot))
       ]);
       return { id: entry.id, metadata, card, mapping };
     })

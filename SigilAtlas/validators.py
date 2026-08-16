@@ -73,7 +73,9 @@ def validate_json_document(document: Any, schema: dict[str, Any], path: str = "$
     if "maximum" in schema and document > schema["maximum"]:
         raise SigilAtlasValidationError(f"{path}: expected value <= {schema['maximum']}")
 
-    if "pattern" in schema and not re.fullmatch(schema["pattern"], document):
+    if "pattern" in schema and isinstance(document, str) and not re.fullmatch(
+        schema["pattern"], document
+    ):
         raise SigilAtlasValidationError(f"{path}: value {document!r} does not match pattern")
 
     expected_type = schema.get("type")
@@ -214,19 +216,20 @@ def validate_atlas_directory(atlas_dir: str | Path | None = None) -> list[str]:
     """Run full Sigil Atlas validation and return a list of issues."""
     root = atlas_root(atlas_dir)
     issues: list[str] = []
-    validations = [
-        lambda: validate_directory_structure(root.parent),
-        lambda: validate_operator_classification(root.parent),
-        lambda: validate_manifest(root.parent),
-    ]
-
-    for validation in validations:
-        try:
-            validation()
-        except (SigilAtlasValidationError, FileNotFoundError, json.JSONDecodeError) as error:
-            issues.append(str(error))
+    manifest: dict[str, Any] | None = None
 
     try:
+        validate_directory_structure(root.parent)
+    except (SigilAtlasValidationError, FileNotFoundError, json.JSONDecodeError) as error:
+        issues.append(str(error))
+
+    try:
+        validate_operator_classification(root.parent)
+    except (SigilAtlasValidationError, FileNotFoundError, json.JSONDecodeError) as error:
+        issues.append(str(error))
+
+    try:
+        validate_manifest(root.parent)
         manifest = load_manifest(root.parent)
     except (SigilAtlasValidationError, FileNotFoundError, json.JSONDecodeError) as error:
         issues.append(str(error))
