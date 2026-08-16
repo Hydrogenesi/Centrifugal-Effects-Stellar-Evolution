@@ -1,0 +1,59 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Sigil to Stellar Evolution Mapping",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["sigilId", "inputFormat", "parameterOverrides"],
+  "properties": {
+    "sigilId": {
+      "type": "string",
+      "pattern": "^[a-z0-9-]+$"
+    },
+    "inputFormat": {
+      "type": "string",
+      "const": "stellar-evolution:v1"
+    },
+    "parameterOverrides": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["parameter", "effect", "unit", "value", "minValue", "maxValue"],
+        "properties": {
+          "parameter": {
+            "type": "string",
+            "enum": [
+              "mass",
+              "initial_density",
+              "initial_luminosity",
+              "initial_temperature",
+              "time_start",
+              "time_stop",
+              "num_steps",
+              "rotation_factor",
+              "centrifugal_enhancement",
+              "evolution_track_variant"
+            ]
+          },
+          "effect": {
+            "type": "string",
+            "enum": ["set", "scale"]
+          },
+          "unit": {
+            "type": "string"
+          },
+          "value": {
+            "type": "number"
+          },
+          "minValue": {
+            "type": "number"
+          },
+          "maxValue": {
+            "type": "number"
+          }
+        }
+      }
+    }
+  }
+}

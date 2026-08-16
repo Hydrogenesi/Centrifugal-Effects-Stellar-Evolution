@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" role="img" aria-labelledby="kepler-title">
+  <title id="kepler-title">Kepler Lattice</title>
+  <metadata>{"version":"1.0.0","sigilId":"kepler-lattice","operatorClass":"stability","geometryFamily":"lattice","anchorPoints":[{"label":"north","x":60,"y":18},{"label":"east","x":102,"y":60},{"label":"south","x":60,"y":102},{"label":"west","x":18,"y":60}]}</metadata>
+  <rect x="26" y="26" width="68" height="68" fill="none" stroke="#1F9D8B" stroke-width="5"/>
+  <path d="M60 18 L102 60 L60 102 L18 60 Z" fill="none" stroke="#1F9D8B" stroke-width="4"/>
+  <circle cx="60" cy="18" r="4" fill="#1F9D8B"/>
+  <circle cx="102" cy="60" r="4" fill="#1F9D8B"/>
+  <circle cx="60" cy="102" r="4" fill="#1F9D8B"/>
+  <circle cx="18" cy="60" r="4" fill="#1F9D8B"/>
+</svg>

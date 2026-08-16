@@ -1,0 +1,27 @@
+{
+  "classes": [
+    {
+      "id": "stability",
+      "label": "Stability Operator",
+      "description": "Tracks steady-state balancing sigils and normalization anchors."
+    },
+    {
+      "id": "rotation",
+      "label": "Rotation Operator",
+      "description": "Maps rotational amplification and centrifugal scaling behaviors."
+    },
+    {
+      "id": "transport",
+      "label": "Transport Operator",
+      "description": "Represents exchange channels across luminosity, temperature, and density."
+    },
+    {
+      "id": "resonance",
+      "label": "Resonance Operator",
+      "description": "Captures coupled oscillation signatures and family inheritance."
+    }
+  ],
+  "tiers": ["foundation", "advanced", "mythic"],
+  "geometryFamilies": ["radial", "spiral", "lattice", "orbital"],
+  "invocationDomains": ["initialization", "calibration", "visualization", "parameter-sweep"]
+}

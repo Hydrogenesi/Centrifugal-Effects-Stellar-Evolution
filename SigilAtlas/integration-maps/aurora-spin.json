@@ -1,0 +1,46 @@
+{
+  "sigilId": "aurora-spin",
+  "inputFormat": "stellar-evolution:v1",
+  "parameterOverrides": [
+    {
+      "parameter": "initial_temperature",
+      "effect": "scale",
+      "unit": "K",
+      "value": 1.1,
+      "minValue": 0.5,
+      "maxValue": 2.0
+    },
+    {
+      "parameter": "time_stop",
+      "effect": "scale",
+      "unit": "s",
+      "value": 1.25,
+      "minValue": 0.5,
+      "maxValue": 5.0
+    },
+    {
+      "parameter": "num_steps",
+      "effect": "set",
+      "unit": "count",
+      "value": 1200,
+      "minValue": 100,
+      "maxValue": 5000
+    },
+    {
+      "parameter": "rotation_factor",
+      "effect": "set",
+      "unit": "ratio",
+      "value": 1.2,
+      "minValue": 0.0,
+      "maxValue": 5.0
+    },
+    {
+      "parameter": "centrifugal_enhancement",
+      "effect": "set",
+      "unit": "ratio",
+      "value": 0.08,
+      "minValue": 0.0,
+      "maxValue": 1.0
+    }
+  ]
+}

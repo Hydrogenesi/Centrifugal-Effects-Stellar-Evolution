@@ -1,0 +1,38 @@
+{
+  "sigilId": "kepler-lattice",
+  "inputFormat": "stellar-evolution:v1",
+  "parameterOverrides": [
+    {
+      "parameter": "initial_density",
+      "effect": "scale",
+      "unit": "kg m^-3",
+      "value": 1.15,
+      "minValue": 0.5,
+      "maxValue": 2.0
+    },
+    {
+      "parameter": "initial_luminosity",
+      "effect": "scale",
+      "unit": "W",
+      "value": 0.92,
+      "minValue": 0.1,
+      "maxValue": 2.0
+    },
+    {
+      "parameter": "time_start",
+      "effect": "set",
+      "unit": "s",
+      "value": 200000.0,
+      "minValue": 1000.0,
+      "maxValue": 100000000.0
+    },
+    {
+      "parameter": "evolution_track_variant",
+      "effect": "set",
+      "unit": "index",
+      "value": 2,
+      "minValue": 0,
+      "maxValue": 10
+    }
+  ]
+}

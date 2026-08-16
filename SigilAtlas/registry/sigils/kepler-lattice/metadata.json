@@ -1,0 +1,35 @@
+{
+  "id": "kepler-lattice",
+  "name": "Kepler Lattice",
+  "operatorClass": "stability",
+  "tier": "foundation",
+  "geometryFamily": "lattice",
+  "invocationDomains": ["initialization", "visualization"],
+  "summary": "A lattice stabilization sigil used to pin density and luminosity seed values.",
+  "geometryProperties": {
+    "symmetryOrder": 4,
+    "closedPath": true,
+    "anchorCount": 4
+  },
+  "svg": {
+    "file": "registry/sigils/kepler-lattice/sigil.svg",
+    "metadataKey": "sigilAtlas"
+  },
+  "card": {
+    "file": "cards/kepler-lattice.json",
+    "title": "Kepler Lattice",
+    "accent": "#1F9D8B"
+  },
+  "stellarIntegration": {
+    "mappingFile": "integration-maps/kepler-lattice.json",
+    "compatibility": {
+      "inputFormat": "stellar-evolution:v1",
+      "supportedParameters": [
+        "initial_density",
+        "initial_luminosity",
+        "time_start",
+        "evolution_track_variant"
+      ]
+    }
+  }
+}

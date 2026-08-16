@@ -1,0 +1,18 @@
+{
+  "atlas": "Sigil Atlas",
+  "version": "1.0.0",
+  "sigils": [
+    {
+      "id": "aurora-spin",
+      "metadataPath": "registry/sigils/aurora-spin/metadata.json",
+      "cardPath": "cards/aurora-spin.json",
+      "mappingPath": "integration-maps/aurora-spin.json"
+    },
+    {
+      "id": "kepler-lattice",
+      "metadataPath": "registry/sigils/kepler-lattice/metadata.json",
+      "cardPath": "cards/kepler-lattice.json",
+      "mappingPath": "integration-maps/kepler-lattice.json"
+    }
+  ]
+}

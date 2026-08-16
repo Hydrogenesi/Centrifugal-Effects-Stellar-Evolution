@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Sigil Atlas</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="hero">
+    <p class="eyebrow">Centrifugal Effects · Registry</p>
+    <h1>Sigil Atlas</h1>
+    <p class="lede">Browse operator-classified sigils, geometry metadata, and stellar-evolution mappings.</p>
+  </header>
+
+  <main>
+    <section class="toolbar">
+      <label for="domain-filter">Invocation domain</label>
+      <select id="domain-filter">
+        <option value="all">All domains</option>
+      </select>
+    </section>
+
+    <section id="catalog" class="catalog" aria-live="polite"></section>
+  </main>
+
+  <template id="sigil-card-template">
+    <article class="sigil-card">
+      <div class="sigil-card__header">
+        <h2></h2>
+        <span class="sigil-card__tier"></span>
+      </div>
+      <div class="sigil-card__preview">
+        <img alt="">
+      </div>
+      <p class="sigil-card__summary"></p>
+      <ul class="sigil-card__badges"></ul>
+      <ul class="sigil-card__callouts"></ul>
+      <dl class="sigil-card__mapping"></dl>
+    </article>
+  </template>
+
+  <script src="app.js"></script>
+</body>
+</html>

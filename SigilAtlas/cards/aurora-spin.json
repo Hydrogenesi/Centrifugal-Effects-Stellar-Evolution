@@ -1,0 +1,10 @@
+{
+  "sigilId": "aurora-spin",
+  "title": "Aurora Spin",
+  "accent": "#7A6FF0",
+  "badges": ["rotation", "advanced", "spiral"],
+  "callouts": [
+    "Scales launch temperature and run horizon.",
+    "Carries explicit rotation and centrifugal annotations."
+  ]
+}

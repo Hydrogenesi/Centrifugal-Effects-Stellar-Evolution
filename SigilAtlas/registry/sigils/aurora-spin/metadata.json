@@ -1,0 +1,37 @@
+{
+  "id": "aurora-spin",
+  "name": "Aurora Spin",
+  "operatorClass": "rotation",
+  "tier": "advanced",
+  "geometryFamily": "spiral",
+  "invocationDomains": ["calibration", "parameter-sweep"],
+  "summary": "A spiral rotation sigil used to scale thermal and rotational launch conditions.",
+  "geometryProperties": {
+    "symmetryOrder": 3,
+    "closedPath": true,
+    "anchorCount": 3
+  },
+  "svg": {
+    "file": "registry/sigils/aurora-spin/sigil.svg",
+    "metadataKey": "sigilAtlas"
+  },
+  "card": {
+    "file": "cards/aurora-spin.json",
+    "title": "Aurora Spin",
+    "accent": "#7A6FF0"
+  },
+  "stellarIntegration": {
+    "mappingFile": "integration-maps/aurora-spin.json",
+    "compatibility": {
+      "inputFormat": "stellar-evolution:v1",
+      "supportedParameters": [
+        "mass",
+        "initial_temperature",
+        "time_stop",
+        "num_steps",
+        "rotation_factor",
+        "centrifugal_enhancement"
+      ]
+    }
+  }
+}

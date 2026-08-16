@@ -1,0 +1,10 @@
+{
+  "sigilId": "kepler-lattice",
+  "title": "Kepler Lattice",
+  "accent": "#1F9D8B",
+  "badges": ["stability", "foundation", "lattice"],
+  "callouts": [
+    "Pins density and luminosity seed values.",
+    "Supports initialization and visualization workflows."
+  ]
+}

@@ -1,0 +1,42 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Sigil Atlas Manifest",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["atlas", "version", "sigils"],
+  "properties": {
+    "atlas": {
+      "type": "string",
+      "const": "Sigil Atlas"
+    },
+    "version": {
+      "type": "string",
+      "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$"
+    },
+    "sigils": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "metadataPath", "cardPath", "mappingPath"],
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^[a-z0-9-]+$"
+          },
+          "metadataPath": {
+            "type": "string"
+          },
+          "cardPath": {
+            "type": "string"
+          },
+          "mappingPath": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  }
+}

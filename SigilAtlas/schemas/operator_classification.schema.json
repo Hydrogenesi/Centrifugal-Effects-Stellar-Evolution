@@ -1,0 +1,54 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Sigil Operator Classification",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["classes", "tiers", "geometryFamilies", "invocationDomains"],
+  "properties": {
+    "classes": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "label", "description"],
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^[a-z0-9-]+$"
+          },
+          "label": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "tiers": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "string",
+        "enum": ["foundation", "advanced", "mythic"]
+      }
+    },
+    "geometryFamilies": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "string",
+        "enum": ["radial", "spiral", "lattice", "orbital"]
+      }
+    },
+    "invocationDomains": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "string",
+        "enum": ["initialization", "calibration", "visualization", "parameter-sweep"]
+      }
+    }
+  }
+}
