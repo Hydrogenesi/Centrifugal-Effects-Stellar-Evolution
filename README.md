@@ -24,7 +24,7 @@ python stellar_evolution.py
 
 - registry-backed sigil metadata and SVG geometry
 - operator classification and geometry families
-- interactive browsing cards in `/home/runner/work/Centrifugal-Effects-Stellar-Evolution/Centrifugal-Effects-Stellar-Evolution/SigilAtlas/ui/`
+- interactive browsing cards in `SigilAtlas/ui/`
 - integration maps for stellar-evolution parameter overrides
 - validation schemas and automated tests
 

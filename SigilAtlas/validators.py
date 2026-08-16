@@ -180,6 +180,10 @@ def validate_sigil_record(sigil_id: str, atlas_dir: str | Path | None = None) ->
             raise SigilAtlasValidationError(
                 f"{sigil_id}: unsupported mapped parameter {override['parameter']!r}"
             )
+        if override["minValue"] > override["maxValue"]:
+            raise SigilAtlasValidationError(
+                f"{sigil_id}: {override['parameter']} has an invalid range declaration"
+            )
         if not override["minValue"] <= override["value"] <= override["maxValue"]:
             raise SigilAtlasValidationError(
                 f"{sigil_id}: {override['parameter']} is outside declared range"
@@ -219,12 +223,12 @@ def validate_atlas_directory(atlas_dir: str | Path | None = None) -> list[str]:
     for validation in validations:
         try:
             validation()
-        except SigilAtlasValidationError as error:
+        except (SigilAtlasValidationError, FileNotFoundError, json.JSONDecodeError) as error:
             issues.append(str(error))
 
     try:
         manifest = load_manifest(root.parent)
-    except (FileNotFoundError, json.JSONDecodeError) as error:
+    except (SigilAtlasValidationError, FileNotFoundError, json.JSONDecodeError) as error:
         issues.append(str(error))
         return issues
 
