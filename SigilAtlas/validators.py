@@ -209,12 +209,27 @@ def validate_atlas_directory(atlas_dir: str | Path | None = None) -> list[str]:
     """Run full Sigil Atlas validation and return a list of issues."""
     root = atlas_root(atlas_dir)
     issues: list[str] = []
+    validations = [
+        lambda: validate_directory_structure(root.parent),
+        lambda: validate_operator_classification(root.parent),
+        lambda: validate_manifest(root.parent),
+    ]
+
+    for validation in validations:
+        try:
+            validation()
+        except SigilAtlasValidationError as error:
+            issues.append(str(error))
+
     try:
-        validate_directory_structure(root.parent)
-        validate_operator_classification(root.parent)
-        validate_manifest(root.parent)
-        for entry in load_manifest(root.parent)["sigils"]:
-            validate_sigil_record(entry["id"], root.parent)
-    except SigilAtlasValidationError as error:
+        manifest = load_manifest(root.parent)
+    except (FileNotFoundError, json.JSONDecodeError) as error:
         issues.append(str(error))
+        return issues
+
+    for entry in manifest["sigils"]:
+        try:
+            validate_sigil_record(entry["id"], root.parent)
+        except SigilAtlasValidationError as error:
+            issues.append(str(error))
     return issues

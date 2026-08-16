@@ -66,7 +66,7 @@ async function init() {
         fetchJson(`../${entry.cardPath}`),
         fetchJson(`../${entry.mappingPath}`)
       ]);
-      return { metadata, card, mapping };
+      return { id: entry.id, metadata, card, mapping };
     })
   );
 

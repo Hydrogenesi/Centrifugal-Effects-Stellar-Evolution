@@ -7,7 +7,7 @@ This repository contains a simplified stellar-evolution script and a new paralle
 Install the Python dependencies:
 
 ```bash
-pip install -r /home/runner/work/Centrifugal-Effects-Stellar-Evolution/Centrifugal-Effects-Stellar-Evolution/requirements.txt
+pip install -r requirements.txt
 ```
 
 ## Core Simulation
@@ -15,12 +15,12 @@ pip install -r /home/runner/work/Centrifugal-Effects-Stellar-Evolution/Centrifug
 Run the baseline simulation with:
 
 ```bash
-python /home/runner/work/Centrifugal-Effects-Stellar-Evolution/Centrifugal-Effects-Stellar-Evolution/stellar_evolution.py
+python stellar_evolution.py
 ```
 
 ## Sigil Atlas
 
-`/home/runner/work/Centrifugal-Effects-Stellar-Evolution/Centrifugal-Effects-Stellar-Evolution/SigilAtlas/` provides:
+`SigilAtlas/` provides:
 
 - registry-backed sigil metadata and SVG geometry
 - operator classification and geometry families
@@ -31,19 +31,19 @@ python /home/runner/work/Centrifugal-Effects-Stellar-Evolution/Centrifugal-Effec
 ### Validate the atlas
 
 ```bash
-python /home/runner/work/Centrifugal-Effects-Stellar-Evolution/Centrifugal-Effects-Stellar-Evolution/integration/stellar-evolution/validate_sigil_atlas.py
+python integration/stellar-evolution/validate_sigil_atlas.py
 ```
 
 ### Export a sigil mapping into stellar-evolution input format
 
 ```bash
-python /home/runner/work/Centrifugal-Effects-Stellar-Evolution/Centrifugal-Effects-Stellar-Evolution/integration/stellar-evolution/export_sigil_parameters.py aurora-spin
+python integration/stellar-evolution/export_sigil_parameters.py aurora-spin
 ```
 
 ### Generate optional mapping plots
 
 ```bash
-python /home/runner/work/Centrifugal-Effects-Stellar-Evolution/Centrifugal-Effects-Stellar-Evolution/integration/stellar-evolution/plot_sigil_mappings.py
+python integration/stellar-evolution/plot_sigil_mappings.py
 ```
 
 ### Browse the UI cards
@@ -51,7 +51,6 @@ python /home/runner/work/Centrifugal-Effects-Stellar-Evolution/Centrifugal-Effec
 Serve the repository root and open the browser at `/SigilAtlas/ui/index.html`:
 
 ```bash
-cd /home/runner/work/Centrifugal-Effects-Stellar-Evolution/Centrifugal-Effects-Stellar-Evolution
 python -m http.server 8000
 ```
 
@@ -60,6 +59,5 @@ python -m http.server 8000
 Run the automated tests with:
 
 ```bash
-cd /home/runner/work/Centrifugal-Effects-Stellar-Evolution/Centrifugal-Effects-Stellar-Evolution
 python -m unittest discover -s tests
 ```

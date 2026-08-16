@@ -17,7 +17,7 @@ from SigilAtlas.validators import SigilAtlasValidationError, validate_sigil_reco
 try:
     from stellar_evolution import initial_conditions as _initial_conditions
 except ModuleNotFoundError as error:
-    if error.name != "numpy":
+    if error.name not in {"stellar_evolution", "numpy", "scipy", "matplotlib"}:
         raise
 
     def _initial_conditions(_: float) -> list[float]:
