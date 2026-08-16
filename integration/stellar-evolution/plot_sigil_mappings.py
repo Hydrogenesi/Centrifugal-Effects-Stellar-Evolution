@@ -5,11 +5,6 @@ from __future__ import annotations
 import sys
 from pathlib import Path
 
-import matplotlib
-
-matplotlib.use("Agg")
-import matplotlib.pyplot as plt
-
 REPO_ROOT = Path(__file__).resolve().parents[2]
 if str(REPO_ROOT) not in sys.path:
     sys.path.insert(0, str(REPO_ROOT))
@@ -18,6 +13,15 @@ from SigilAtlas.loader import load_registry
 
 
 def main() -> int:
+    try:
+        import matplotlib
+
+        matplotlib.use("Agg")
+        import matplotlib.pyplot as plt
+    except ModuleNotFoundError as error:
+        print(f"Plot generation requires the optional dependency {error.name}.")
+        return 1
+
     registry = load_registry(REPO_ROOT)
     output_path = REPO_ROOT / "SigilAtlas" / "ui" / "mapping-distribution.png"
 

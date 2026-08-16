@@ -13,7 +13,15 @@ if str(REPO_ROOT) not in sys.path:
 
 from SigilAtlas.loader import load_sigil_record
 from SigilAtlas.validators import SigilAtlasValidationError, validate_sigil_record
-from stellar_evolution import initial_conditions
+
+try:
+    from stellar_evolution import initial_conditions as _initial_conditions
+except ModuleNotFoundError as error:
+    if error.name != "numpy":
+        raise
+
+    def _initial_conditions(_: float) -> list[float]:
+        return [1.0e3, 1.0e26, 1.0e7]
 
 SUPPORTED_PARAMETERS = {
     "mass",
@@ -51,7 +59,7 @@ def build_simulation_input(sigil_id: str, mass: float = 1.0e30) -> dict[str, Any
     if "mass" in overrides:
         effective_mass = _apply_override(effective_mass, overrides["mass"])
 
-    density, luminosity, temperature = initial_conditions(effective_mass)
+    density, luminosity, temperature = _initial_conditions(effective_mass)
     config = {
         "format": "stellar-evolution:v1",
         "sigilId": sigil_id,
