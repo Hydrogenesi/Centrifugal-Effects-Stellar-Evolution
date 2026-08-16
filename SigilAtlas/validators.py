@@ -80,6 +80,8 @@ def validate_json_document(document: Any, schema: dict[str, Any], path: str = "$
 
     expected_type = schema.get("type")
     if expected_type == "object":
+        if not isinstance(document, dict):
+            raise SigilAtlasValidationError(f"{path}: expected object, found {_json_type_name(document)}")
         required = schema.get("required", [])
         for key in required:
             if key not in document:
@@ -94,6 +96,8 @@ def validate_json_document(document: Any, schema: dict[str, Any], path: str = "$
                 raise SigilAtlasValidationError(f"{path}: unexpected property {key!r}")
 
     if expected_type == "array":
+        if not isinstance(document, list):
+            raise SigilAtlasValidationError(f"{path}: expected array, found {_json_type_name(document)}")
         if len(document) < schema.get("minItems", 0):
             raise SigilAtlasValidationError(
                 f"{path}: expected at least {schema['minItems']} items"
