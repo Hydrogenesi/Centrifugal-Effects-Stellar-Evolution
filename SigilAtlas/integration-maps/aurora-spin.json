@@ -5,6 +5,7 @@
     {
       "parameter": "initial_temperature",
       "effect": "scale",
+      "valueSemantics": "multiplier",
       "unit": "K",
       "value": 1.1,
       "minValue": 0.5,
@@ -13,6 +14,7 @@
     {
       "parameter": "time_stop",
       "effect": "scale",
+      "valueSemantics": "multiplier",
       "unit": "s",
       "value": 1.25,
       "minValue": 0.5,
@@ -21,6 +23,7 @@
     {
       "parameter": "num_steps",
       "effect": "set",
+      "valueSemantics": "absolute",
       "unit": "count",
       "value": 1200,
       "minValue": 100,
@@ -29,6 +32,7 @@
     {
       "parameter": "rotation_factor",
       "effect": "set",
+      "valueSemantics": "absolute",
       "unit": "ratio",
       "value": 1.2,
       "minValue": 0.0,
@@ -37,6 +41,7 @@
     {
       "parameter": "centrifugal_enhancement",
       "effect": "set",
+      "valueSemantics": "absolute",
       "unit": "ratio",
       "value": 0.08,
       "minValue": 0.0,

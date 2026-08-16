@@ -19,7 +19,7 @@
       "items": {
         "type": "object",
         "additionalProperties": false,
-        "required": ["parameter", "effect", "unit", "value", "minValue", "maxValue"],
+        "required": ["parameter", "effect", "valueSemantics", "unit", "value", "minValue", "maxValue"],
         "properties": {
           "parameter": {
             "type": "string",
@@ -39,6 +39,10 @@
           "effect": {
             "type": "string",
             "enum": ["set", "scale"]
+          },
+          "valueSemantics": {
+            "type": "string",
+            "enum": ["absolute", "multiplier"]
           },
           "unit": {
             "type": "string"

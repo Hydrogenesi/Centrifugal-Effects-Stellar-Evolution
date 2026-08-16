@@ -182,6 +182,11 @@ def validate_sigil_record(sigil_id: str, atlas_dir: str | Path | None = None) ->
             raise SigilAtlasValidationError(
                 f"{sigil_id}: unsupported mapped parameter {override['parameter']!r}"
             )
+        expected_semantics = "multiplier" if override["effect"] == "scale" else "absolute"
+        if override["valueSemantics"] != expected_semantics:
+            raise SigilAtlasValidationError(
+                f"{sigil_id}: {override['parameter']} has inconsistent value semantics"
+            )
         if override["minValue"] > override["maxValue"]:
             raise SigilAtlasValidationError(
                 f"{sigil_id}: {override['parameter']} has an invalid range declaration"

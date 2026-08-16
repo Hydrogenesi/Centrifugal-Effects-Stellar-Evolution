@@ -110,7 +110,14 @@ def main(argv: list[str]) -> int:
         return 1
 
     sigil_id = argv[1]
-    mass = float(argv[2]) if len(argv) > 2 else 1.0e30
+    if len(argv) > 2:
+        try:
+            mass = float(argv[2])
+        except ValueError:
+            print("Mass must be a numeric value.")
+            return 1
+    else:
+        mass = 1.0e30
     config = build_simulation_input(sigil_id, mass)
     print(json.dumps(config, indent=2))
     return 0
