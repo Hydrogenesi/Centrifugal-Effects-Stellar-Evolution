@@ -32,9 +32,9 @@ def load_schema(name: str, atlas_dir: str | Path | None = None) -> dict[str, Any
 def _json_type_name(value: Any) -> str:
     if isinstance(value, bool):
         return "boolean"
-    if isinstance(value, int) and not isinstance(value, bool):
+    if isinstance(value, int):
         return "integer"
-    if isinstance(value, (int, float)) and not isinstance(value, bool):
+    if isinstance(value, float):
         return "number"
     if isinstance(value, str):
         return "string"
@@ -154,15 +154,16 @@ def validate_sigil_record(sigil_id: str, atlas_dir: str | Path | None = None) ->
     mapping_schema = load_schema("stellar_mapping.schema.json", root.parent)
     svg_schema = load_schema("sigil_svg_metadata.schema.json", root.parent)
 
+    svg_metadata = extract_svg_metadata(record["svgPath"])
+
     validate_json_document(record["metadata"], metadata_schema, "$")
     validate_json_document(record["card"], card_schema, "$")
     validate_json_document(record["mapping"], mapping_schema, "$")
-    validate_json_document(extract_svg_metadata(record["svgPath"]), svg_schema, "$")
+    validate_json_document(svg_metadata, svg_schema, "$")
 
     metadata = record["metadata"]
     mapping = record["mapping"]
     card = record["card"]
-    svg_metadata = extract_svg_metadata(record["svgPath"])
 
     if metadata["id"] != sigil_id or card["sigilId"] != sigil_id or mapping["sigilId"] != sigil_id:
         raise SigilAtlasValidationError(f"Sigil identifiers are inconsistent for {sigil_id}")

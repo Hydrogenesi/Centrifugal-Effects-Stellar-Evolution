@@ -48,7 +48,7 @@ python integration/stellar-evolution/plot_sigil_mappings.py
 
 ### Browse the UI cards
 
-Serve the repository root and open the browser at `/SigilAtlas/ui/index.html`:
+Serve the repository root and open the browser at `SigilAtlas/ui/index.html`:
 
 ```bash
 python -m http.server 8000
